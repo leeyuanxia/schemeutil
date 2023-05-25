@@ -1,7 +1,7 @@
 scheme: head://module/action?params={json}
 
 #使用方法：
-##1。在android的module的build.gradle 中引入
+## 1。在android的module的build.gradle 中引入
 `
 plugin  id 'kotlin-kapt'
 `
@@ -29,9 +29,9 @@ implementation 'cn.thecover.lib.schemeutils:lib-annotation:VERSION@jar'
 `
 依赖
 
-##2。在application oncreate的时候调用SUInit.init(this);
+## 2。在application oncreate的时候调用SUInit.init(this);
 
-##3。在app的mainfest中添加
+## 3。在app的mainfest中添加
 `
 <activity
     android:name="cn.thecover.lib.schemeutils.SchemeDispatcherActivity"
@@ -48,7 +48,7 @@ implementation 'cn.thecover.lib.schemeutils:lib-annotation:VERSION@jar'
     </intent-filter>
 </activity>
 `
-##4。使用demo:
+## 4。使用demo:
 `
 @Module("xxx")
 class MyTestDispatcher {
@@ -59,7 +59,7 @@ class MyTestDispatcher {
 }
 `
 
-##5。注意：@Module中的value具有唯一性，只能在一个代码文件中定义
+## 5。注意：@Module中的value具有唯一性，只能在一个代码文件中定义
 
 
 
