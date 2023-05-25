@@ -54,7 +54,8 @@ implementation 'cn.thecover.lib.schemeutils:lib-annotation:VERSION@jar'
 @Module("xxx")
 class MyTestDispatcher {
     @Action("xxx")
-    fun testInvoke(context: Context?, params: String?) {
+    fun testInvoke(context: Context?, params: String?, callback: Callback?) {
+        callback.call("{json}")
         Log.e("MyTestDispatcher", "testInvoke${params}")
     }
 }
