@@ -1,0 +1,49 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+    id 'maven-publish'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+task javaSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from sourceSets.main.allSource
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId = 'cn.thecover.lib.schemeutils'
+                artifactId = 'lib-annotation'
+                version = VERSION.VERSION_SCHEMEUTILS_ANNOTATION
+                description "schemeutils annotation lib"
+                afterEvaluate {
+                    from components.java
+                }
+                artifact(javaSourcesJar)
+            }
+        }
+
+        repositories {
+            maven {
+                //非 https 的仓库地址，需要设置 allowInsecureProtocol true
+                allowInsecureProtocol true
+                name = "cover" //可选
+                url = MAVEN_REPO_RELEASE_URL
+                credentials {
+                    it.username = NEXUS_USERNAME
+                    it.password = NEXUS_PASSWORD
+                }
+            }
+        }
+    }
+}
+
+artifacts {
+    archives javaSourcesJar
+}

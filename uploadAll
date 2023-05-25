@@ -1,0 +1,7 @@
+#!/bin/sh
+
+./gradlew :schemeutils:constant:clean :schemeutils:constant:publish
+./gradlew :schemeutils:constant:clean :schemeutils:IDispatchers:publish
+./gradlew :schemeutils:lib-annotation:clean :schemeutils:lib-annotation:publish
+./gradlew :schemeutils:lib-processer:clean :schemeutils:lib-processer:publish
+./gradlew :schemeutils:clean :schemeutils:publish

@@ -1,0 +1,29 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' } //gradle-plugin
+        maven { url 'https://maven.aliyun.com/repository/google' } //google
+        maven { url 'https://maven.aliyun.com/repository/public' } //public
+        maven { url 'https://maven.aliyun.com/repository/jcenter'} //jcenter
+        maven {
+            allowInsecureProtocol true
+            url = MAVEN_REPO_RELEASE_URL
+        }
+    }
+}
+rootProject.name = "schemesdk"
+include ':app'
+include ':schemeutils'
+include ':schemeutils:constant'
+include ':schemeutils:lib-annotation'
+include ':schemeutils:lib-processer'
+include ':schemeutils:IDispatchers'

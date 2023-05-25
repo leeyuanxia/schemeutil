@@ -1,0 +1,84 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
+}
+
+android {
+    namespace 'com.thecover.lib.schemeutils.idispatchers'
+    compileSdk 32
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 32
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from android.sourceSets.main.java.srcDirs
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId = 'cn.thecover.lib.schemeutils'
+                artifactId = 'IDispatchers'
+                version = VERSION.VERSION_SCHEMEUTILS_IDISPATCHERS
+                description "cover schemeutil IDispatchers lib"
+                afterEvaluate {
+                    from components.release
+                }
+                artifact(androidSourcesJar)
+            }
+        }
+
+        repositories {
+            maven {
+                //非 https 的仓库地址，需要设置 allowInsecureProtocol true
+                allowInsecureProtocol true
+                url = MAVEN_REPO_RELEASE_URL
+                credentials {
+                    it.username = NEXUS_USERNAME
+                    it.password = NEXUS_PASSWORD
+                }
+            }
+        }
+    }
+}
+
+artifacts {
+    archives androidSourcesJar
+}
+
+dependencies {
+
+
+    implementation rootProject.DEPS.ktlin_core
+    implementation rootProject.DEPS.appcompat
+    implementation rootProject.DEPS.material
+
+
+    testImplementation rootProject.DEPS.test_junit
+    androidTestImplementation rootProject.DEPS.junit_ext
+    androidTestImplementation rootProject.DEPS.espresso_core
+
+    implementation rootProject.DEPS.kotlin_stdlib
+}

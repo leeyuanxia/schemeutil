@@ -1,0 +1,10 @@
+//读取全局配置，选择对应项目
+
+def lib_version = new Properties()
+lib_version.load(new InputStreamReader(new FileInputStream("${projectDir}/lib_version.properties"), "UTF-8"))
+println "全局配置：${lib_version}"
+
+
+ext {
+    VERSION = lib_version
+}

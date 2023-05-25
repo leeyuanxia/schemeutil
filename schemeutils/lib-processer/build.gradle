@@ -1,0 +1,59 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+    id 'kotlin-kapt'
+    id 'maven-publish'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+dependencies {
+
+    implementation rootProject.DEPS.java_poet
+    compileOnly project(path: ':schemeutils:lib-annotation')
+    compileOnly project(path: ':schemeutils:constant')
+    implementation rootProject.DEPS.kotlin_stdlib
+
+    compileOnly rootProject.DEPS.auto_service
+    kapt rootProject.DEPS.auto_service
+}
+task javaSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from sourceSets.main.allSource
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId = 'cn.thecover.lib.schemeutils'
+                artifactId = 'lib-processor'
+                version = VERSION.VERSION_SCHEMEUTILS_PROCESSER
+                description "schemeutils processor lib"
+                afterEvaluate {
+                    from components.java
+                }
+                artifact(javaSourcesJar)
+            }
+        }
+
+        repositories {
+            maven {
+                //非 https 的仓库地址，需要设置 allowInsecureProtocol true
+                allowInsecureProtocol true
+                name = "cover" //可选
+                url = MAVEN_REPO_RELEASE_URL
+                credentials {
+                    it.username = NEXUS_USERNAME
+                    it.password = NEXUS_PASSWORD
+                }
+            }
+        }
+    }
+}
+
+artifacts {
+    archives javaSourcesJar
+}
