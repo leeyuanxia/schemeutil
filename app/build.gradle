@@ -47,7 +47,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    implementation 'cn.thecover.lib.schemeutils:schemeutil:1.0.0@aar'
-    kapt 'cn.thecover.lib.schemeutils:lib-processor:1.0.0@jar'
-    implementation 'cn.thecover.lib.schemeutils:lib-annotation:1.0.3@jar'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation project(path: ':schemeutils:lib-annotation')
+    implementation project(path: ':schemeutils:IDispatchers')
+    implementation project(path: ':schemeutils')
+    kapt project(path: ':schemeutils:lib-processer')
+
 }

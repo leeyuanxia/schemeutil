@@ -1,0 +1,17 @@
+<html>
+<head>
+<body>
+<h1>
+    <a id="ahref" href="test://news/getName?callback=getName">test://news/getName?callback=getName</a>
+</h1>
+</body>
+
+<script>
+    function getName(str){
+        alert(str);
+        document.getElementById("ahref").text = str;
+    }
+
+</script>
+</head>
+</html>

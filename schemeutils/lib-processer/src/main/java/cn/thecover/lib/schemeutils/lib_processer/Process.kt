@@ -91,12 +91,13 @@ class Process: AbstractProcessor() {
             .addParameter(String::class.java, "module")
             .addParameter(String::class.java, "action")
             .addParameter(String::class.java, "params")
+            .addParameter(Class.forName("com.thecover.lib.schemeutils.idispatchers.Callback"), "callback")
             .addStatement("String fullName = (String) moduleMap.get(module);\n" +
                     "      try {\n" +
                     "          Class clazz = Class.forName(fullName);\n" +
                     "          for (${'$'}T method : clazz.getDeclaredMethods()) {\n" +
                     "              if (method.getAnnotation(${'$'}T.class) != null && action.equals(method.getAnnotation(${'$'}T.class).name())) {\n" +
-                    "                  method.invoke(clazz.getDeclaredConstructor().newInstance(),context, params);\n" +
+                    "                 method.invoke(clazz.getDeclaredConstructor().newInstance(),context, params, callback);\n" +
                     "              return true;}\n" +
                     "          }\n" +
                     "      } catch (Exception e) {\n" +

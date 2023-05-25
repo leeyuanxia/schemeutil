@@ -8,5 +8,5 @@ import android.content.Context
  * desc:
  */
 interface Dispatchers {
-   fun dispatch(context: Context?, module:String?, action: String?, params: String?): Boolean
+   fun dispatch(context: Context?, module:String?, action: String?, params: String?, callback: Callback?): Boolean
 }
