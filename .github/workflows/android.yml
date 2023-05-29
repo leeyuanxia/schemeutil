@@ -25,4 +25,5 @@ jobs:
 
         - uses: actions/upload-artifact@v3
           with:
-           name: package.apk
+           name: package
+           path: package.apk
