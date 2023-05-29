@@ -23,8 +23,9 @@ jobs:
         - name: Build APK
           run: ./gradlew :app:assembleDebug
 
-            # 发布到 Release
-        - name: Release apk
-          uses: ncipollo/release-action@v1.5.0
-          with:
-            artifacts: "build/app/outputs/apk/release/*.apk"
+        - name: Upload debug apk
+            if: always()
+            uses: actions/upload-artifact@v3
+            with:
+              name: schemeutil-debug
+              path: schemeutil-debug.apk
