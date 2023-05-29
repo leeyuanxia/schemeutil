@@ -24,7 +24,7 @@ jobs:
           run: ./gradlew :app:assembleDebug
 
         - name: Upload debug apk
-          uses: actions/upload-artifact@v3.1.2
-          with:
-            name: schemeutil-debug
-            path: schemeutil-debug.apk
+            uses: actions/upload-artifact@v3
+            with:
+              name: schemeutil-debug
+              path: app/build/outputs/apk/debug/schemeutil-debug.apk
