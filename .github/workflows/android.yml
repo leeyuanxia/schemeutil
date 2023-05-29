@@ -24,7 +24,6 @@ jobs:
           run: ./gradlew :app:assembleDebug
 
         - name: Upload debug apk
-            if: always()
             uses: actions/upload-artifact@v3
             with:
               name: schemeutil-debug
