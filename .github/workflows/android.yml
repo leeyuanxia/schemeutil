@@ -27,4 +27,4 @@ jobs:
             uses: actions/upload-artifact@v3
             with:
               name: schemeutil-debug
-              path: gitapp/build/outputs/apk/debug/schemeutil-debug.apk
+              path: app/build/outputs/apk/debug/schemeutil-debug.apk
