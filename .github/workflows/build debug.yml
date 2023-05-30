@@ -51,8 +51,8 @@ jobs:
           name: schemeutil
           path: schemeutil-debug.apk
 
-      - name: Upload debug apk
-        uses: ncipollo/release-action@v1
-        with:
-          allowUpdates: true
-          generateReleaseNotes: true
+      - uses: actions/checkout@v3
+          uses: ncipollo/release-action@v1
+          with:
+            allowUpdates: true
+            generateReleaseNotes: true
