@@ -49,4 +49,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: schemeutil
-          path: schemeutilgit-debug.apk
+          path: schemeutil-debug.apk
