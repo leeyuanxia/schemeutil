@@ -52,6 +52,6 @@ jobs:
           path: schemeutil-debug.apk
 
       - uses: ncipollo/release-action@v1
-          with:
-            allowUpdates: true
-            generateReleaseNotes: true
+        with:
+          allowUpdates: true
+          generateReleaseNotes: true
