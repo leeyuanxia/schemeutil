@@ -48,5 +48,5 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: pr-ddg-debug
-          path: pr-ddg-debug.apk
+          name: schemeutil
+          path: schemeutil-debug.apk
