@@ -50,5 +50,5 @@ jobs:
         with:
           allowUpdates: true
           generateReleaseNotes: true
-          path: schemeutil-debug.apk
+
       
