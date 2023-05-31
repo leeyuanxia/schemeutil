@@ -42,7 +42,7 @@ jobs:
 
       - name: Obtain debug apk
         if: always()
-        run: cp $(find . -regex '.*outputs/apk/.*.apk') pr-ddg-debug.apk
+        run: cp $(find . -regex '.*outputs/apk/.*.apk') schemeutil-debug.apk
 
       - name: Upload debug apk
         if: always()
